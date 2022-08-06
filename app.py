@@ -63,8 +63,7 @@ def fill():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     get_message = event.message.text
-    if get_message="/填寫":
-        fill()
+    fill()
     # Send To Line
     reply = TextSendMessage(text=f"OK!")
     line_bot_api.reply_message(event.reply_token, reply)
