@@ -35,12 +35,12 @@ def callback():
 def fill():  
     "避免彈跳視窗" 
     options = Options()
+    
+    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
     options.add_argument("--disable-notifications")
     options.add_argument("--headless")
     options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
-    chrome = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
+    chrome = webdriver.Chrome(executable_path=str(os.environ.get("CHROMEDRIVER_PATH")), chrome_options=options)
     chrome.get("https://zh.surveymonkey.com/r/EmployeeHealthCheck")
     chrome.find_element_by_id("66405067_542650090").click()
     company_id = str(534301)
