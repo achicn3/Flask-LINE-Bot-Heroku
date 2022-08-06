@@ -37,7 +37,7 @@ def fill():
     options = Options()
     options.add_argument("--disable-notifications")
     options.add_argument("--headless")
-    chrome = webdriver.Chrome('./chromedriver', chrome_options=options)
+    chrome = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), chrome_options=options)
     chrome.get("https://zh.surveymonkey.com/r/EmployeeHealthCheck")
     chrome.find_element_by_id("66405067_542650090").click()
     company_id = str(534301)
