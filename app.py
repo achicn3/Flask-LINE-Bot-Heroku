@@ -37,42 +37,27 @@ def callback():
     options = Options()
     options.add_argument("--disable-notifications")
     options.add_argument("--headless")
-
-    "開啟瀏覽器"
     chrome = webdriver.Chrome('./chromedriver', chrome_options=options)
     chrome.get("https://zh.surveymonkey.com/r/EmployeeHealthCheck")
-
-    "同意蒐集"
     chrome.find_element_by_id("66405067_542650090").click()
-
-    "工號"
     company_id = str(534301)
     input_company_id = chrome.find_element_by_id("66405064")
     input_company_id.send_keys(company_id)
 
-    "選擇額溫測量"
     chrome.find_element_by_id("66405069_542650092").click()
 
-    "輸入溫度"
     temperature = float(random.randint(360,367)) / 10
     chrome.find_element_by_id("66405065").send_keys(str(temperature))
 
-    "無發燒症狀"
     chrome.find_element_by_id("66405075_542650132").click()
 
-    "無前述情形"
     chrome.find_element_by_id("66405078_542650167").click()
 
-    "無旅遊史"
     chrome.find_element_by_id("66405074_542650161").click()
 
-    "已接種疫苗"
     chrome.find_element_by_id("66405076_542650156").click()
 
-    "已詳閱"
     chrome.find_element_by_id("66405066_542650082").click()
-
-    "下一頁"
     chrome.find_element_by_css_selector(".survey-submit-actions").click()
 
 @handler.add(MessageEvent, message=TextMessage)
